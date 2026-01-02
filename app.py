@@ -594,7 +594,14 @@ if model_artifacts:
         
         fig = go.Figure()
         
-        colors = ['#2ecc71', '#f1c40f', '#e67e22', '#e74c3c']
+        # Map colors to match alert levels: green, orange, red, yellow
+        color_map = {
+            'green': '#2ecc71',
+            'orange': '#e67e22', 
+            'red': '#e74c3c',
+            'yellow': '#f1c40f'
+        }
+        colors = [color_map[cls.lower()] for cls in classes]
         
         fig.add_trace(go.Bar(
             x=classes,
