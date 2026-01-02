@@ -588,19 +588,19 @@ if model_artifacts:
         </div>
         """, unsafe_allow_html=True)
         
-   st.markdown("<div class='input-card'>", unsafe_allow_html=True)
+   # ================== Confidence Distribution ==================
+st.markdown("<div class='input-card'>", unsafe_allow_html=True)
 st.markdown("<h2 class='section-title'>📊 Confidence Distribution</h2>", unsafe_allow_html=True)
 
 import plotly.graph_objects as go
 
 fig = go.Figure()
 
-# Alert labels and probabilities
 colors = ['#2ecc71', '#f1c40f', '#e67e22', '#e74c3c']
 
 fig.add_trace(go.Bar(
-    x=classes,                     # ['GREEN', 'YELLOW', 'ORANGE', 'RED']
-    y=(proba * 100).tolist(),       # Convert to list (important for safety)
+    x=classes,
+    y=(proba * 100).tolist(),
     marker=dict(
         color=colors,
         line=dict(color='white', width=2)
@@ -624,6 +624,8 @@ fig.update_layout(
 
 st.plotly_chart(fig, use_container_width=True)
 st.markdown("</div>", unsafe_allow_html=True)
+# ==============================================================
+
         
         # Impact Metrics
         st.markdown("<div class='input-card'>", unsafe_allow_html=True)
