@@ -398,7 +398,7 @@ st.markdown("""
         <p class='hero-subtitle'>Earthquake Impact Prediction System</p>
         <p class='hero-description'>
              Advanced earthquake alert prediction system for disaster management<br>
-    	     Real-time seismic risk assessment for emergency preparedness
+             Real-time seismic risk assessment for emergency preparedness
         </p>
     </div>
 """, unsafe_allow_html=True)
@@ -452,8 +452,8 @@ if model_artifacts:
         st.markdown("""
         <div style='text-align: center; padding: 15px;'>
         <p style='color: #888; font-size: 0.85rem; margin: 0;'>
-        Developed by Pooja Yadav under the mentorship of Gopal Sir  <br>
-	For Educational Purposes
+        Developed by Pooja Yadav under the mentorship of Gopal Sir<br>
+        For Educational Purposes
         </p>
         </div>
         """, unsafe_allow_html=True)
@@ -588,44 +588,40 @@ if model_artifacts:
         </div>
         """, unsafe_allow_html=True)
         
-   # ================== Confidence Distribution ==================
-st.markdown("<div class='input-card'>", unsafe_allow_html=True)
-st.markdown("<h2 class='section-title'>📊 Confidence Distribution</h2>", unsafe_allow_html=True)
-
-import plotly.graph_objects as go
-
-fig = go.Figure()
-
-colors = ['#2ecc71', '#f1c40f', '#e67e22', '#e74c3c']
-
-fig.add_trace(go.Bar(
-    x=classes,
-    y=(proba * 100).tolist(),
-    marker=dict(
-        color=colors,
-        line=dict(color='white', width=2)
-    ),
-    text=[f"{p*100:.1f}%" for p in proba],
-    textposition="outside",
-    hovertemplate="<b>%{x}</b><br>Probability: %{y:.1f}%<extra></extra>"
-))
-
-fig.update_layout(
-    title="Probability of Each Alert Level",
-    xaxis_title="Alert Level",
-    yaxis_title="Probability (%)",
-    yaxis=dict(range=[0, 100]),
-    height=420,
-    showlegend=False,
-    template="plotly_white",
-    margin=dict(l=40, r=40, t=60, b=40),
-    hovermode="closest"
-)
-
-st.plotly_chart(fig, use_container_width=True)
-st.markdown("</div>", unsafe_allow_html=True)
-# ==============================================================
-
+        # Confidence Distribution
+        st.markdown("<div class='input-card'>", unsafe_allow_html=True)
+        st.markdown("<h2 class='section-title'>📊 Confidence Distribution</h2>", unsafe_allow_html=True)
+        
+        fig = go.Figure()
+        
+        colors = ['#2ecc71', '#f1c40f', '#e67e22', '#e74c3c']
+        
+        fig.add_trace(go.Bar(
+            x=classes,
+            y=(proba * 100).tolist(),
+            marker=dict(
+                color=colors,
+                line=dict(color='white', width=2)
+            ),
+            text=[f"{p*100:.1f}%" for p in proba],
+            textposition="outside",
+            hovertemplate="<b>%{x}</b><br>Probability: %{y:.1f}%<extra></extra>"
+        ))
+        
+        fig.update_layout(
+            title="Probability of Each Alert Level",
+            xaxis_title="Alert Level",
+            yaxis_title="Probability (%)",
+            yaxis=dict(range=[0, 100]),
+            height=420,
+            showlegend=False,
+            template="plotly_white",
+            margin=dict(l=40, r=40, t=60, b=40),
+            hovermode="closest"
+        )
+        
+        st.plotly_chart(fig, use_container_width=True)
+        st.markdown("</div>", unsafe_allow_html=True)
         
         # Impact Metrics
         st.markdown("<div class='input-card'>", unsafe_allow_html=True)
@@ -739,9 +735,8 @@ st.markdown("""
     <p style='font-size: 1.5rem; margin: 0; color: #667eea;'>🌍 <strong>ImpactSense</strong></p>
     <p class='footer-text' style='margin: 10px 0 0 0;'>
          Earthquake Impact Prediction System<br>
-   	 Developed for Disaster Management & Emergency Response<br>
-    	<small>Academic Project | For Educational Purposes Only</small>
+         Developed for Disaster Management & Emergency Response<br>
+        <small>Academic Project | For Educational Purposes Only</small>
     </p>
 </div>
 """, unsafe_allow_html=True)
-
