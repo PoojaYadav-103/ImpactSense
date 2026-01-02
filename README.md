@@ -194,16 +194,6 @@ streamlit run app.py
 
 ---
 
-## 🚀 Future Enhancements
-
-* Deep learning models (LSTM, CNN)
-* Real-time seismic data (USGS API)
-* Mobile app (Android / iOS)
-* SMS & Email alert system
-* Multi-language support
-
----
-
 ## 🌟 Real-World Impact
 
 * Disaster management agencies
