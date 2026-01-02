@@ -708,10 +708,11 @@ if model_artifacts:
         </div>
         """, unsafe_allow_html=True)
         
-        # Timestamp
+        # Timestamp - Generate at prediction time
+        current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         st.markdown(f"""
         <div style='text-align: center; color: #888; font-size: 0.9rem; margin-top: 30px;'>
-            Prediction generated at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+            Prediction generated at: {current_time}
         </div>
         """, unsafe_allow_html=True)
     
