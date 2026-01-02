@@ -588,55 +588,42 @@ if model_artifacts:
         </div>
         """, unsafe_allow_html=True)
         
-        # Probability Distribution Chart
-        st.markdown("<div class='input-card'>", unsafe_allow_html=True)
-        st.markdown("<h2 class='section-title'>📊 Confidence Distribution</h2>", unsafe_allow_html=True)
-        
-        fig = go.Figure()
-        
-        colors = ['#27ae60', '#f39c12', '#e67e22', '#e74c3c']
-        
-        fig.add_trace(go.Bar(
-            x=classes,
-            y=proba * 100,
-            marker=dict(
-                color=colors,
-                line=dict(color='white', width=3),
-                pattern_shape=["/", "\\", "x", "."]
-            ),
-            text=[f'{p*100:.1f}%' for p in proba],
-            textposition='outside',
-            textfont=dict(size=16, color='#333', family='Poppins'),
-            hovertemplate='<b>%{x}</b><br>Probability: %{y:.1f}%<extra></extra>'
-        ))
-        
-        fig.update_layout(
-            title=dict(
-                text="Probability of Each Alert Level",
-                font=dict(size=24, color='#333', family='Poppins'),
-                x=0.5,
-                xanchor='center'
-            ),
-            xaxis=dict(
-                title="Alert Level",
-                titlefont=dict(size=18, color='#555'),
-                tickfont=dict(size=14, color='#555')
-            ),
-            yaxis=dict(
-                title="Probability (%)",
-                titlefont=dict(size=18, color='#555'),
-                tickfont=dict(size=14, color='#555'),
-                range=[0, 110]
-            ),
-            showlegend=False,
-            height=450,
-            plot_bgcolor='rgba(0,0,0,0)',
-            paper_bgcolor='rgba(0,0,0,0)',
-            hovermode='x unified'
-        )
-        
-        st.plotly_chart(fig, use_container_width=True)
-        st.markdown("</div>", unsafe_allow_html=True)
+   st.markdown("<div class='input-card'>", unsafe_allow_html=True)
+st.markdown("<h2 class='section-title'>📊 Confidence Distribution</h2>", unsafe_allow_html=True)
+
+import plotly.graph_objects as go
+
+fig = go.Figure()
+
+# Alert labels and probabilities
+colors = ['#2ecc71', '#f1c40f', '#e67e22', '#e74c3c']
+
+fig.add_trace(go.Bar(
+    x=classes,                     # ['GREEN', 'YELLOW', 'ORANGE', 'RED']
+    y=(proba * 100).tolist(),       # Convert to list (important for safety)
+    marker=dict(
+        color=colors,
+        line=dict(color='white', width=2)
+    ),
+    text=[f"{p*100:.1f}%" for p in proba],
+    textposition="outside",
+    hovertemplate="<b>%{x}</b><br>Probability: %{y:.1f}%<extra></extra>"
+))
+
+fig.update_layout(
+    title="Probability of Each Alert Level",
+    xaxis_title="Alert Level",
+    yaxis_title="Probability (%)",
+    yaxis=dict(range=[0, 100]),
+    height=420,
+    showlegend=False,
+    template="plotly_white",
+    margin=dict(l=40, r=40, t=60, b=40),
+    hovermode="closest"
+)
+
+st.plotly_chart(fig, use_container_width=True)
+st.markdown("</div>", unsafe_allow_html=True)
         
         # Impact Metrics
         st.markdown("<div class='input-card'>", unsafe_allow_html=True)
