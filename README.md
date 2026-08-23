@@ -144,6 +144,8 @@ Pipeline:
 
 ## 🌐 Web Application
 
+Demo Link : https://impactsense.streamlit.app/
+
 * Built using **Streamlit**
 * Interactive input sliders
 * Animated alert cards
